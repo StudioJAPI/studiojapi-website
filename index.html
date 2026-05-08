@@ -193,6 +193,10 @@ header.scrolled .nav-cta:hover { background: var(--purple) !important; border-co
 
 header.scrolled .menu-toggle span { background: var(--black); }
 
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 .mobile-nav {
 
   display: none; position: fixed; inset: 0;
@@ -1046,8 +1050,6 @@ footer { background: var(--black); color: var(--white); padding: 72px 48px 40px;
 <!-- MOBILE NAV -->
 
 <div class="mobile-nav" id="mobileNav">
-
-  <button class="close-btn" id="closeMenu">×</button>
 
   <a onclick="showPage('home');closeMobileMenu()">Home</a>
 
@@ -2500,18 +2502,22 @@ window.addEventListener('scroll', () => {
 
 // MOBILE MENU
 
-document.getElementById('menuToggle').addEventListener('click', () => {
+const menuToggle = document.getElementById('menuToggle');
+const mobileNav = document.getElementById('mobileNav');
 
-  document.getElementById('mobileNav').classList.add('open');
-
+menuToggle.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.contains('open');
+  if (isOpen) {
+    closeMobileMenu();
+  } else {
+    mobileNav.classList.add('open');
+    menuToggle.classList.add('open');
+  }
 });
 
-document.getElementById('closeMenu').addEventListener('click', closeMobileMenu);
-
 function closeMobileMenu() {
-
-  document.getElementById('mobileNav').classList.remove('open');
-
+  mobileNav.classList.remove('open');
+  menuToggle.classList.remove('open');
 }
 
 // PAGE NAV
@@ -2605,40 +2611,35 @@ if (contactForm) {
 
 // ── BROWSER NAVIGATIE (terug/vooruit pijltjes) ──
 (function() {
-  // Laad de juiste pagina op basis van de URL hash
   function getPageFromHash() {
     return location.hash.replace('#', '') || 'home';
   }
 
-  // Pas showPage aan zodat hij ook de URL hash bijhoudt
+  function safeHistoryState(method, state, title, url) {
+    try { history[method](state, title, url); } catch(e) { /* iframe preview */ }
+  }
+
   const _origShowPage = showPage;
   window.showPage = function(id, scrollToId) {
     const current = getPageFromHash();
     if (current !== id) {
-      history.pushState({ page: id, scrollToId: scrollToId || null }, '', '#' + id);
+      safeHistoryState('pushState', { page: id, scrollToId: scrollToId || null }, '', '#' + id);
     }
     _origShowPage(id, scrollToId);
   };
 
-  // Reageer op terug/vooruit knop
   window.addEventListener('popstate', function(e) {
     const page = (e.state && e.state.page) ? e.state.page : 'home';
     const scrollId = (e.state && e.state.scrollToId) ? e.state.scrollToId : null;
     _origShowPage(page, scrollId);
   });
 
-  // Bij laden: check of er al een hash in de URL staat
   window.addEventListener('DOMContentLoaded', function() {
     const page = getPageFromHash();
     if (page && page !== 'home') {
       _origShowPage(page);
     }
-    // Zet beginstate zodat terug naar home ook werkt
-    if (!location.hash) {
-      history.replaceState({ page: 'home', scrollToId: null }, '', '#home');
-    } else {
-      history.replaceState({ page: page, scrollToId: null }, '', location.hash);
-    }
+    safeHistoryState('replaceState', { page: page || 'home', scrollToId: null }, '', location.hash || '#home');
   });
 })();
 
