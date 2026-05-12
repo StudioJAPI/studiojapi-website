@@ -123,7 +123,7 @@ header.scrolled {
 
 .logo { display: flex; align-items: center; cursor: none; }
 
-.logo img { height: 48px; width: auto; }
+.logo img { height: 64px; width: auto; }
 
 nav { display: flex; gap: 36px; align-items: center; }
 
@@ -1084,6 +1084,12 @@ footer { background: var(--black); color: var(--white); padding: 72px 48px 40px;
 
 
 
+.service-card::after { content: '→'; position: absolute; bottom: 28px; right: 28px; font-size: 18px; font-weight: 700; color: var(--purple); opacity: 0; transform: translateX(-8px); transition: opacity 0.25s ease, transform 0.25s ease; }
+
+.service-card:hover::after { opacity: 1; transform: translateX(0); }
+
+.service-card:hover .service-card::after { color: var(--white); }
+
 /* ── MICRO-INTERACTIONS ── */
 
 /* Service cards */
@@ -1237,7 +1243,7 @@ footer a:hover { letter-spacing: 0.04em; }
 
       <div class="services-grid">
 
-        <div class="service-card reveal reveal-delay-1">
+        <a onclick="showPage('diensten','social-media')" class="service-card reveal reveal-delay-1" style="cursor:none;display:block;text-decoration:none;color:inherit">
 
           <span class="service-num">01</span>
 
@@ -1255,9 +1261,9 @@ footer a:hover { letter-spacing: 0.04em; }
 
           <p>Geen standaard posts, maar creatieve content met een plan. We bedenken, maken en beheren jouw socials zodat je feed strak is en je bereik groeit.</p>
 
-        </div>
+        </a>
 
-        <div class="service-card reveal reveal-delay-2">
+        <a onclick="showPage('diensten','branding')" class="service-card reveal reveal-delay-2" style="cursor:none;display:block;text-decoration:none;color:inherit">
 
           <span class="service-num">02</span>
 
@@ -1275,9 +1281,9 @@ footer a:hover { letter-spacing: 0.04em; }
 
           <p>Een merk dat blijft hangen. Van je visuele stijl tot je tone of voice: alles klopt, voelt goed en werkt. Gebouwd op strategie, gedreven door karakter.</p>
 
-        </div>
+        </a>
 
-        <div class="service-card reveal reveal-delay-3">
+        <a onclick="showPage('diensten','campagnes')" class="service-card reveal reveal-delay-3" style="cursor:none;display:block;text-decoration:none;color:inherit">
 
           <span class="service-num">03</span>
 
@@ -1295,7 +1301,7 @@ footer a:hover { letter-spacing: 0.04em; }
 
           <p>Van het eerste idee tot de laatste klik. Campagnes die blijven hangen én iets opleveren. Slim concept, duidelijke boodschap, meetbaar resultaat.</p>
 
-        </div>
+        </a>
 
       </div>
 
@@ -1560,7 +1566,7 @@ footer a:hover { letter-spacing: 0.04em; }
 
             <div class="role">Mede-oprichter</div>
 
-            <p>Strategische denker en mede-oprichter van Studio JAPI. Houdt zich graag bezig met branding, positionering, campagnes en het vertalen van ideeën naar een sterk en duidelijk verhaal. Met een scherpe blik, rustige aanpak en gevoel voor merkidentiteit helpt hij merken om keuzes te maken die kloppen, opvallen en beter blijven hangen.oed uitziet, is de kans groot dat Jasper er iets mee te maken heeft.</p>
+            <p>Strategische denker en mede-oprichter van Studio JAPI. Houdt zich graag bezig met branding, positionering, campagnes en het vertalen van ideeën naar een sterk en duidelijk verhaal. Met een scherpe blik, rustige aanpak en gevoel voor merkidentiteit helpt hij merken om keuzes te maken die kloppen, opvallen en beter blijven hangen.</p>
 
           </div>
 
@@ -1576,7 +1582,7 @@ footer a:hover { letter-spacing: 0.04em; }
 
             <div class="role">Mede-oprichter</div>
 
-            <p>Creatieve ondernemer en mede-oprichter van Studio JAPI. Denkt graag mee over branding, social media, campagnes en content die niet alleen mooi is, maar ook echt iets vertelt. Met een frisse blik, veel energie en een directe manier van werken helpt hij merken om hun verhaal sterker, menselijker en opvallender naar buiten te brengen.ustig, doordacht en altijd met een plan in zijn hoofd.</p>
+            <p>Creatieve ondernemer en mede-oprichter van Studio JAPI. Denkt graag mee over branding, social media, campagnes en content die niet alleen mooi is, maar ook echt iets vertelt. Met een frisse blik, veel energie en een directe manier van werken helpt hij merken om hun verhaal sterker, menselijker en opvallender naar buiten te brengen.</p>
 
           </div>
 
