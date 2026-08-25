@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /bedankt.html
+Disallow: /bedankt/
 
 Sitemap: https://studiojapi.nl/sitemap.xml

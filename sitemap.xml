@@ -7,49 +7,31 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://studiojapi.nl/over-ons.html</loc>
+    <loc>https://studiojapi.nl/over-ons/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://studiojapi.nl/diensten.html</loc>
+    <loc>https://studiojapi.nl/diensten/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://studiojapi.nl/social-media-management.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://studiojapi.nl/branding-positionering.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://studiojapi.nl/campagnes-activaties.html</loc>
-    <lastmod>2026-08-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://studiojapi.nl/ons-werk.html</loc>
+    <loc>https://studiojapi.nl/ons-werk/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://studiojapi.nl/contact.html</loc>
+    <loc>https://studiojapi.nl/contact/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://studiojapi.nl/algemene-voorwaarden.html</loc>
+    <loc>https://studiojapi.nl/algemene-voorwaarden/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
