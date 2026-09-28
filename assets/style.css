@@ -1172,3 +1172,15 @@ footer a:hover { letter-spacing: 0.04em; }
 .privacy-contact p { margin-bottom: 4px; }
 .privacy-contact p:last-child { margin-bottom: 0; }
 @media (max-width: 768px) { .privacy-wrap { padding: 48px 20px 64px; } .privacy-block h2 { font-size: 23px; } }
+
+/* CURSOR: nooit twee cursors tegelijk.
+   Met muis (breed scherm): alleen de paarse custom cursor. Elementen met een eigen browsercursor
+   (links, knoppen, formuliervelden, labels, select, ...) worden hier ook verborgen.
+   Zonder muis of op een smal scherm: custom cursor uit, normale cursor terug. */
+@media (min-width: 769px) and (any-hover: hover) and (any-pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+@media (max-width: 768px), (any-hover: none) {
+  .cursor, .cursor-follower { display: none !important; }
+  *, *::before, *::after { cursor: revert !important; }
+}
