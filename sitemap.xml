@@ -25,12 +25,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://studiojapi.nl/blog/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://studiojapi.nl/blog/ai-content-merk-herkenbaar/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -55,6 +49,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://studiojapi.nl/blog/marketingcampagne-succesvol-maken/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://studiojapi.nl/blog/images/studio-japi-jasper-en-pim-voetbaldoel-1440.jpg</image:loc>
+      <image:caption>Jasper en Pim van Studio JAPI staan samen in een voetbaldoel, Pim met een bal onder zijn arm</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://studiojapi.nl/contact/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>yearly</changefreq>
@@ -71,5 +75,11 @@
     <lastmod>2026-09-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://studiojapi.nl/blog/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
