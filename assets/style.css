@@ -1175,10 +1175,14 @@ footer a:hover { letter-spacing: 0.04em; }
 
 /* CURSOR: nooit twee cursors tegelijk.
    Met muis (breed scherm): alleen de paarse custom cursor. Alle elementen (links, knoppen, formuliervelden,
-   labels, select, ...) krijgen een onzichtbare cursor; 'none' blijft als terugval voor browsers die de afbeelding niet tonen.
+   labels, select, ...) krijgen cursor:none. Een los cursor-plaatje (data-URI GIF) is hier bewust NIET
+   gebruikt: browsers moeten zo'n afbeelding telkens opnieuw decoderen/renderen, en bij een korte pauze of
+   een klik (style recalculation) laten sommige browsers daardoor héél even de systeemcursor weer zien.
+   De losse CSS-waarde 'none' is een standaard sleutelwoord (geen afbeelding, geen laadmoment) en kan dus
+   niet op die manier terugflikkeren.
    Zonder muis of op een smal scherm: custom cursor uit, normale cursor terug. */
 @media (min-width: 769px) and (any-hover: hover) and (any-pointer: fine) {
-  html, body, *, *::before, *::after { cursor: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0, none !important; }
+  html, body, *, *::before, *::after { cursor: none !important; }
 }
 @media (max-width: 768px), (any-hover: none) {
   .cursor, .cursor-follower { display: none !important; }
