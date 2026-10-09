@@ -1174,17 +1174,22 @@ footer a:hover { letter-spacing: 0.04em; }
 @media (max-width: 768px) { .privacy-wrap { padding: 48px 20px 64px; } .privacy-block h2 { font-size: 23px; } }
 
 /* CURSOR: nooit twee cursors tegelijk.
-   Met muis (breed scherm): alleen de paarse custom cursor. Alle elementen (links, knoppen, formuliervelden,
-   labels, select, ...) krijgen cursor:none. Een los cursor-plaatje (data-URI GIF) is hier bewust NIET
-   gebruikt: browsers moeten zo'n afbeelding telkens opnieuw decoderen/renderen, en bij een korte pauze of
-   een klik (style recalculation) laten sommige browsers daardoor héél even de systeemcursor weer zien.
-   De losse CSS-waarde 'none' is een standaard sleutelwoord (geen afbeelding, geen laadmoment) en kan dus
-   niet op die manier terugflikkeren.
-   Zonder muis of op een smal scherm: custom cursor uit, normale cursor terug. */
-@media (min-width: 769px) and (any-hover: hover) and (any-pointer: fine) {
-  html, body, *, *::before, *::after { cursor: none !important; }
-}
-@media (max-width: 768px), (any-hover: none) {
-  .cursor, .cursor-follower { display: none !important; }
-  *, *::before, *::after { cursor: revert !important; }
-}
+   Dit wordt NIET via CSS media-features (any-hover/any-pointer) geregeld: die
+   worden door sommige browsers/apparaten opnieuw berekend bij stilstand of een
+   klik, waardoor de systeemcursor even terugflikkert. In plaats daarvan zet
+   assets/main.js de klasse "has-mouse" op <html> zodra er een echte
+   muisbeweging is gedetecteerd, en die klasse blijft staan. Zolang die klasse
+   er niet is (geen muis gedetecteerd, of smal scherm) blijft de gewone
+   systeemcursor gewoon zichtbaar en is de paarse stip verborgen. */
+.cursor, .cursor-follower { display: none; }
+html.has-mouse .cursor, html.has-mouse .cursor-follower { display: block; }
+html.has-mouse,
+html.has-mouse *,
+html.has-mouse *::before,
+html.has-mouse *::after { cursor: none !important; }
+/* Zolang JS geen echte muis heeft gedetecteerd (of op een smal scherm): altijd de
+   normale systeemcursor, ook op elementen die hierboven in dit bestand hun eigen
+   cursor:none hebben (logo, knoppen, links, formuliervelden, ...). */
+html:not(.has-mouse) *,
+html:not(.has-mouse) *::before,
+html:not(.has-mouse) *::after { cursor: revert !important; }

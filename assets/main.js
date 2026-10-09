@@ -1,16 +1,70 @@
 // CURSOR — dot instant, ring lightly follows
+// De paarse cursor en het verbergen van de systeemcursor worden hier bewust
+// NIET meer via CSS media-features (any-hover/any-pointer) geregeld: die
+// features worden door sommige browsers/apparaten opnieuw berekend zodra de
+// muis stilstaat of er geklikt wordt, waardoor de systeemcursor even
+// terugflikkert. In plaats daarvan zet JS, puur op basis van een écht
+// gedetecteerde muisbeweging (pointerType === 'mouse'), een klasse op <html>.
+// Die klasse blijft staan (ook bij stilstand of een klik) totdat er
+// daadwerkelijk met een vinger/pen wordt aangeraakt.
 
 const cursor = document.getElementById('cursor');
 
 const follower = document.getElementById('cursorFollower');
 
+const htmlEl = document.documentElement;
+
 let mx = 0, my = 0, fx = 0, fy = 0;
 
-document.addEventListener('mousemove', e => {
+let pointerEventsSupported = 'PointerEvent' in window;
 
-  mx = e.clientX; my = e.clientY;
+function activateCursor(x, y) {
+
+  if (window.innerWidth <= 768) return;
+
+  if (!htmlEl.classList.contains('has-mouse')) htmlEl.classList.add('has-mouse');
+
+  mx = x; my = y;
 
   cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
+
+}
+
+if (pointerEventsSupported) {
+
+  window.addEventListener('pointermove', e => {
+
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+
+    activateCursor(e.clientX, e.clientY);
+
+  }, { passive: true });
+
+  window.addEventListener('pointerdown', e => {
+
+    if (e.pointerType === 'touch' || e.pointerType === 'pen') {
+
+      htmlEl.classList.remove('has-mouse');
+
+    }
+
+  }, { passive: true });
+
+} else {
+
+  // Zeer oude browsers zonder Pointer Events: val terug op mousemove.
+
+  window.addEventListener('mousemove', e => {
+
+    activateCursor(e.clientX, e.clientY);
+
+  }, { passive: true });
+
+}
+
+window.addEventListener('resize', () => {
+
+  if (window.innerWidth <= 768) htmlEl.classList.remove('has-mouse');
 
 });
 
